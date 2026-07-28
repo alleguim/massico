@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sa Majesté Massico Ier — Site Officiel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Work+Sans:wght@400;500;600&family=Space+Mono&display=swap');
+
+  :root{
+    --creme: #F1E6D2;
+    --creme-dark: #E4D3B4;
+    --brindle: #8B5E3C;
+    --choco: #3C2622;
+    --bourgogne: #6B2737;
+    --or: #C9A24B;
+    --or-clair: #E4C878;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--creme);
+    color: var(--choco);
+    font-family: 'Work Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Texture papier léger */
+  body::before{
+    content:"";
+    position: fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(139,94,60,0.05) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107,39,55,0.05) 0, transparent 40%);
+    z-index: 1;
+  }
+
+  h1,h2,h3{ font-family: 'Playfair Display', serif; margin:0; }
+
+  .eyebrow{
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--bourgogne);
+    font-weight: 700;
+  }
+
+  a{ color: inherit; }
+
+  /* ===== HEADER / MASTHEAD ===== */
+  .masthead{
+    position: relative;
+    z-index: 2;
+    border-bottom: 3px solid var(--choco);
+    padding: 14px 24px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family:'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--creme);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position: relative;
+    z-index: 2;
+    padding: 70px 24px 90px;
+    text-align:center;
+    border-bottom: 3px double var(--choco);
+    background: var(--creme);
+  }
+
+  .seal{
+    width: 108px; height:108px;
+    margin: 0 auto 26px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--or-clair), var(--or) 60%, #9c7a2e 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 6px 18px rgba(60,38,34,0.35), inset 0 0 0 4px rgba(60,38,34,0.15);
+    font-size: 2.6rem;
+    position: relative;
+    animation: sealDrop 900ms cubic-bezier(.2,1.4,.4,1) both;
+  }
+  .seal::after{
+    content:"";
+    position:absolute; inset:-10px;
+    border-radius:50%;
+    border: 2px dashed rgba(60,38,34,0.25);
+  }
+  @keyframes sealDrop{
+    0%{ transform: translateY(-40px) rotate(-8deg) scale(0.6); opacity:0; }
+    100%{ transform: translateY(0) rotate(0deg) scale(1); opacity:1; }
+  }
+
+  .hero h1{
+    font-family:'Abril Fatface', serif;
+    font-size: clamp(2.6rem, 7vw, 5.2rem);
+    line-height: 0.98;
+    color: var(--bourgogne);
+    text-shadow: 2px 2px 0 rgba(60,38,34,0.12);
+  }
+  .hero .subtitle{
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.2vw, 1.35rem);
+    margin-top: 14px;
+    color: var(--choco);
+  }
+  .hero .full-title{
+    max-width: 620px;
+    margin: 26px auto 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #5a4640;
+  }
+
+  .breathing-badge{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    margin-top: 30px;
+    padding: 8px 18px;
+    background: var(--choco);
+    color: var(--creme);
+    border-radius: 999px;
+    font-family:'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+  .snore-dot{
+    width:8px; height:8px; border-radius:50%;
+    background: #7FCB8F;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; transform:scale(1); }
+    50%{ opacity:0.4; transform:scale(0.7); }
+  }
+
+  /* ===== SECTIONS GENERIQUES ===== */
+  section{
+    position: relative;
+    z-index: 2;
+    padding: 64px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom: 40px;
+  }
+  .section-head h2{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-top: 6px;
+  }
+
+  hr.rule{
+    border:0;
+    border-top: 1px solid rgba(60,38,34,0.25);
+    margin: 60px auto;
+    max-width: 900px;
+  }
+
+  /* ===== TITRES OFFICIELS ===== */
+  .titres{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 18px;
+  }
+  .titre-card{
+    background: var(--creme-dark);
+    border: 1px solid rgba(60,38,34,0.15);
+    padding: 22px 20px;
+    border-radius: 4px;
+    position:relative;
+  }
+  .titre-card .rank{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    color: var(--bourgogne);
+    letter-spacing: 0.1em;
+  }
+  .titre-card h3{
+    font-size: 1.15rem;
+    margin: 6px 0 8px;
+    color: var(--choco);
+  }
+  .titre-card p{
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #5a4640;
+    margin:0;
+  }
+
+  /* ===== JAUGE DE BAVE (signature) ===== */
+  .jauge-wrap{
+    background: var(--choco);
+    color: var(--creme);
+    border-radius: 10px;
+    padding: 36px 30px;
+    text-align:center;
+  }
+  .jauge-wrap .eyebrow{ color: var(--or-clair); }
+  .jauge-wrap h2{ color: var(--creme); }
+  .jauge-track{
+    position:relative;
+    height: 26px;
+    background: rgba(241,230,210,0.12);
+    border-radius: 999px;
+    margin: 30px auto 14px;
+    max-width: 520px;
+    overflow:hidden;
+    border: 1px solid rgba(241,230,210,0.25);
+  }
+  .jauge-fill{
+    position:absolute; left:0; top:0; bottom:0;
+    width: 12%;
+    background: linear-gradient(90deg, #4d7ea8, #7fb2d6);
+    border-radius: 999px;
+    animation: bave 6s ease-in-out infinite;
+  }
+  @keyframes bave{
+    0%{ width: 8%; }
+    50%{ width: 78%; }
+    80%{ width: 92%; }
+    100%{ width: 8%; }
+  }
+  .jauge-label{
+    font-family:'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: rgba(241,230,210,0.75);
+  }
+
+  /* ===== EMPLOI DU TEMPS ===== */
+  table.emploi{
+    width:100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  table.emploi th, table.emploi td{
+    text-align:left;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(60,38,34,0.15);
+  }
+  table.emploi th{
+    font-family:'Space Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bourgogne);
+  }
+  table.emploi tr:hover{ background: rgba(139,94,60,0.06); }
+
+  /* ===== COMMUNIQUÉS ===== */
+  .communique{
+    border-left: 4px solid var(--bourgogne);
+    padding: 6px 0 6px 22px;
+    margin-bottom: 30px;
+  }
+  .communique .eyebrow{ display:block; margin-bottom: 6px; }
+  .communique p{
+    font-family:'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .communique .signature{
+    display:block;
+    margin-top: 10px;
+    font-family:'Work Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.82rem;
+    color: #5a4640;
+  }
+
+  /* ===== EXIGENCES ===== */
+  .exigences{
+    list-style: none;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap: 14px;
+  }
+  .exigences li{
+    display:flex;
+    gap: 14px;
+    align-items:flex-start;
+    background: var(--creme-dark);
+    padding: 16px 18px;
+    border-radius: 4px;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  .exigences li .num{
+    font-family:'Abril Fatface', serif;
+    font-size: 1.3rem;
+    color: var(--or);
+    min-width: 32px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    position: relative;
+    z-index:2;
+    text-align:center;
+    padding: 50px 24px 60px;
+    border-top: 3px solid var(--choco);
+    font-family:'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+    color: #5a4640;
+  }
+  footer .paw{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .seal, .snore-dot, .jauge-fill{ animation: none !important; }
+  }
+
+  @media (max-width: 560px){
+    .masthead{ flex-direction: column; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <span>★ Édition du jour — tirage : 1 panier</span>
+    <span>Royaume du Canapé — depuis toujours</span>
+  </header>
+
+  <section class="hero" style="max-width:none; padding-top:70px;">
+    <div class="seal">👑</div>
+    <span class="eyebrow">Communiqué officiel</span>
+    <h1>Massico I<sup style="font-size:0.4em;">er</sup></h1>
+    <p class="subtitle">Souverain autoproclamé du salon, Gardien du panier, Protecteur des croquettes</p>
+    <p class="full-title">Bouledogue anglais, né sans cou visible, élevé dans le respect strict de la sieste. Ne répond de sa Majesté que si un jambon est en jeu.</p>
+    <div class="breathing-badge"><span class="snore-dot"></span> EN DIRECT : Sa Majesté ronfle actuellement</div>
+  </section>
+
+  <section id="titres">
+    <div class="section-head">
+      <span class="eyebrow">Chapitre I</span>
+      <h2>Titres &amp; décorations officielles</h2>
+    </div>
+    <div class="titres">
+      <div class="titre-card">
+        <span class="rank">Titre n°1</span>
+        <h3>Champion du monde de respiration bruyante</h3>
+        <p>Médaille d'or obtenue sans concurrence, catégorie « on l'entend depuis la cuisine ».</p>
+      </div>
+      <div class="titre-card">
+        <span class="rank">Titre n°2</span>
+        <h3>Grand Maître de l'immobilisme</h3>
+        <p>Record national du temps passé à fixer un mur avec une intensité inexpliquée.</p>
+      </div>
+      <div class="titre-card">
+        <span class="rank">Titre n°3</span>
+        <h3>Ambassadeur de la bave royale</h3>
+        <p>Signe chaque coussin de la maison de son sceau personnel, sans autorisation.</p>
+      </div>
+      <div class="titre-card">
+        <span class="rank">Titre n°4</span>
+        <h3>Ministre de la Sieste</h3>
+        <p>Cumule ce poste avec ceux de Ministre du Goûter et Ministre du Canapé, sans conflit d'intérêts.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section id="jauge">
+    <div class="jauge-wrap">
+      <span class="eyebrow">Instrument officiel de mesure</span>
+      <h2>Jauge de bave royale</h2>
+      <div class="jauge-track"><div class="jauge-fill"></div></div>
+      <span class="jauge-label">Niveau mis à jour en temps réel, généralement à la hausse après le repas</span>
+    </div>
+  </section>
+
+  <section id="emploi">
+    <div class="section-head">
+      <span class="eyebrow">Chapitre II</span>
+      <h2>Emploi du temps officiel de la Cour</h2>
+    </div>
+    <table class="emploi">
+      <thead>
+        <tr><th>Heure</th><th>Activité</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>07h00</td><td>Réveil brutal de la maisonnée par un éternuement</td></tr>
+        <tr><td>07h05</td><td>Retour immédiat au lit, la mission est jugée accomplie</td></tr>
+        <tr><td>09h00</td><td>Sieste de récupération après le réveil</td></tr>
+        <tr><td>12h00</td><td>Audience publique devant le frigo</td></tr>
+        <tr><td>12h05</td><td>Sieste de digestion préventive</td></tr>
+        <tr><td>15h00</td><td>Ronde de surveillance : de la porte au canapé</td></tr>
+        <tr><td>15h04</td><td>Sieste de récompense pour la ronde</td></tr>
+        <tr><td>19h00</td><td>Négociations tarifaires pour un bout de jambon</td></tr>
+        <tr><td>21h00</td><td>Sieste nocturne préparatoire à la nuit</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="rule">
+
+  <section id="communiques">
+    <div class="section-head">
+      <span class="eyebrow">Chapitre III</span>
+      <h2>Communiqués de presse</h2>
+    </div>
+    <div class="communique">
+      <span class="eyebrow">Sur la question du bain</span>
+      <p>« On ne mouille pas un souverain. On lui présente ses excuses. »</p>
+      <span class="signature">— Cabinet de Sa Majesté Massico</span>
+    </div>
+    <div class="communique">
+      <span class="eyebrow">Sur la question de la laisse</span>
+      <p>« La marche se fera au rythme de la Cour, c'est-à-dire à l'arrêt, la plupart du temps. »</p>
+      <span class="signature">— Cabinet de Sa Majesté Massico</span>
+    </div>
+    <div class="communique">
+      <span class="eyebrow">Sur la question des croquettes</span>
+      <p>« Une réforme du bol est à l'étude. Sa Majesté exige plus, et surtout, plus vite. »</p>
+      <span class="signature">— Cabinet de Sa Majesté Massico</span>
+    </div>
+  </section>
+
+  <section id="exigences">
+    <div class="section-head">
+      <span class="eyebrow">Chapitre IV</span>
+      <h2>Exigences protocolaires</h2>
+    </div>
+    <ul class="exigences">
+      <li><span class="num">01</span><span>Le canapé du salon est un bien de la Couronne. Toute occupation par un tiers reste temporaire et révocable sans préavis.</span></li>
+      <li><span class="num">02</span><span>Tout retour à la maison doit être célébré comme un événement historique, même après trois minutes d'absence.</span></li>
+      <li><span class="num">03</span><span>Le carrelage froid de la cuisine est déclaré résidence d'été officielle en période de chaleur.</span></li>
+      <li><span class="num">04</span><span>Les ronflements ne sont pas un bruit, mais l'hymne national de la maisonnée.</span></li>
+      <li><span class="num">05</span><span>Toute promenade s'arrête net devant chaque poubelle, par respect du protocole olfactif.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="paw">🐾</div>
+    Site officieux, non affilié à un véritable royaume — réalisé avec affection pour Massico, le meilleur des bouledogues.
+  </footer>
+
+</body>
+</html>
